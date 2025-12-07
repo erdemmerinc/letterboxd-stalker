@@ -1,0 +1,246 @@
+body {
+    background-color: #14181c;
+    color: #fff;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.container {
+    width: 100%;
+    max-width: 800px;
+    text-align: center;
+}
+
+h1 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.highlight {
+    color: #40bcf4;
+}
+
+.search-box {
+    margin: 30px 0;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+/* --- YENİ EKLENEN KISIMLAR BURADA --- */
+
+/* 1. Kapsayıcı Kutu (Dış Çerçeve) */
+.input-wrapper {
+    position: relative; /* X ikonunu buna göre hizalayacağız */
+    width: 60%;         /* Genişliği artık burası kontrol ediyor */
+    display: flex;
+    align-items: center;
+}
+
+/* 2. Genel Input Stilleri */
+input {
+    padding: 12px;
+    border-radius: 5px;
+    border: none;
+    background: #2c3440;
+    color: white;
+    font-size: 1rem;
+    outline: none;
+    /* width: 60% sildim çünkü genişliği wrapper'dan alacak */
+}
+
+/* 3. Wrapper'ın İçindeki Input (Özel Ayar) */
+.input-wrapper input {
+    width: 100%;        /* Kapsayıcının tamamını kapla */
+    padding-right: 35px; /* Yazı X işaretinin altına girmesin diye sağdan boşluk */
+}
+
+/* 4. X İkonu (Temizleme Butonu) */
+.clear-icon {
+    position: absolute;  /* Serbest dolaşım hakkı */
+    right: 10px;         /* Sağa yapış */
+    color: #99aabb;
+    cursor: pointer;
+    font-size: 1.1rem;
+    transition: color 0.2s;
+    user-select: none;   /* Seçilemesin */
+    z-index: 10;         /* En üstte dursun */
+}
+
+.clear-icon:hover {
+    color: #d32f2f; /* Üzerine gelince kırmızı */
+}
+
+/* --- BUTON VE DİĞERLERİ --- */
+
+input:focus {
+    background: #445566;
+}
+
+button {
+    padding: 12px 25px;
+    border: none;
+    border-radius: 5px;
+    background: #00e054;
+    color: #14181c;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: 0.2s;
+}
+
+button:hover {
+    background: #00b042;
+    transform: scale(1.05);
+}
+
+.movies-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.movie-card {
+    background: #2c3440;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.3s;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+.movie-card:hover {
+    transform: translateY(-5px);
+}
+
+.movie-card img {
+    width: 100%;
+    height: 225px;
+    object-fit: cover;
+}
+
+.movie-info {
+    padding: 10px;
+}
+
+.movie-title {
+    font-size: 0.9rem;
+    font-weight: bold;
+    margin: 0;
+    color: #fff;
+}
+
+.hidden {
+    display: none;
+}
+
+/* --- YORUM KUTUSU --- */
+.movie-review {
+    font-size: 0.85rem;
+    color: #b0c4de;
+    margin-top: 10px;
+    height: 120px;
+    overflow-y: auto;
+    background: #222;
+    padding: 10px;
+    border-radius: 5px;
+    text-align: left;
+    line-height: 1.4;
+    border-left: 3px solid #00e054;
+}
+
+.movie-review img {
+    display: none !important;
+}
+
+.movie-review p {
+    margin: 0 0 10px 0;
+}
+
+.movie-review::-webkit-scrollbar {
+    width: 6px;
+}
+.movie-review::-webkit-scrollbar-thumb {
+    background-color: #445566;
+    border-radius: 4px;
+}
+.movie-review::-webkit-scrollbar-track {
+    background: #14181c;
+}
+
+/* --- FİLTRE BUTONLARI --- */
+.filter-buttons {
+    margin: 20px 0;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.filter-btn {
+    background: #2c3440;
+    color: #99aabb;
+    padding: 8px 16px;
+    font-size: 0.85rem;
+    border: 1px solid #445566;
+    cursor: pointer; /* Bunu unutmuşuz, ekledim */
+}
+
+.filter-btn:hover {
+    background: #445566;
+    color: #fff;
+}
+
+.filter-btn.active {
+    background: #00e054;
+    color: #14181c;
+    border-color: #00e054;
+    font-weight: bold;
+}
+
+/* --- İSTATİSTİK (DEDEKTİF) KARTI --- */
+.stats-card {
+    background: #1e232b; /* Kart rengi */
+    padding: 20px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-around; /* Yan yana diz */
+    align-items: center;
+    margin-bottom: 20px;
+    border: 1px solid #445566;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+}
+
+.stat-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.stat-value {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #fff;
+    margin-bottom: 5px;
+}
+
+/* Ortalama puana Letterboxd turuncusu/yeşili verelim */
+#avgScore {
+    color: #00e054;
+}
+
+/* Rütbe yazısı biraz havalı dursun */
+#userRank {
+    color: #40bcf4;
+    text-transform: uppercase;
+    font-size: 1.2rem;
+}
+
+.stat-label {
+    font-size: 0.8rem;
+    color: #99aabb;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}

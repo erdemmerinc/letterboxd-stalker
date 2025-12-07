@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Letterboxd Stalker</title>
+    <link rel="stylesheet" href="style.css"> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <h1>LETTERBOXD REVİEWS <span class="highlight">STALKER</span></h1>
+            <p>Kullanıcı adını gir, son izlediklerini dök.</p>
+        </header>
+
+        <div class="search-box">
+            <div class="input-wrapper">
+                <input type="text" id="usernameInput" placeholder="Örn: mubi, pupkin...">
+                <span id="clearBtn" class="clear-icon">✖</span>
+            </div>
+            
+            <button id="searchBtn">GÖZETLE</button>
+        </div>
+
+        <div id="statsCard" class="stats-card hidden">
+            <div class="stat-item">
+                <span class="stat-value" id="totalCount">0</span>
+                <span class="stat-label">Film</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-value" id="avgScore">0.0</span>
+                <span class="stat-label">Ortalama</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-value" id="userRank">-</span>
+                <span class="stat-label">Rütbe</span>
+            </div>
+        </div>
+
+
+        <div id="filterContainer" class="filter-buttons hidden">
+            <button class="filter-btn active" data-filter="all">Tümü</button>
+            <button class="filter-btn" data-filter="low">Ortalama (≤ 3.5★)</button>
+            <button class="filter-btn" data-filter="high">Yüksek (4★+)</button>
+        </div>
+
+        <div id="loading" class="hidden">Veriler çekiliyor...</div>
+
+        <div id="moviesGrid" class="movies-grid">
+            </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
